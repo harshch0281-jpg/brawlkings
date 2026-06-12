@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0d0600;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* WAITING SCREEN */
+#waiting-screen {
+  text-align: center;
+  padding: 40px;
+}
+#waiting-screen h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 10vw, 6rem);
+  background: linear-gradient(135deg, #ffaa00, #ff4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+#wait-msg {
+  font-size: 1.1rem;
+  color: #a09080;
+  margin-bottom: 24px;
+  letter-spacing: 0.1em;
+}
+#player-list {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.player-badge {
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  border: 2px solid;
+}
+
+/* GAME SCREEN */
+#game-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HUD */
+#hud {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 8px;
+  background: rgba(0,0,0,0.7);
+}
+.hud-card {
+  background: rgba(0,0,0,0.5);
+  border-radius: 8px;
+  padding: 6px 10px;
+  border: 2px solid;
+}
+.hud-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+.hp-bar-bg {
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  height: 7px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+.hp-bar { height: 100%; border-radius: 4px; transition: width 0.2s; }
+.hud-hp { font-size: 0.6rem; color: #a09080; margin-top: 2px; }
+.dead-card { opacity: 0.3; filter: grayscale(1); }
+
+/* CANVAS */
+#gc {
+  flex: 1;
+  width: 100%;
+  display: block;
+}
+
+/* MOBILE CONTROLS */
+#mobile-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(0,0,0,0.8);
+  gap: 10px;
+}
+#left-controls, #right-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+#mobile-controls button {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.2);
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  active: scale(0.95);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+#btn-punch { border-color: #ff4444; color: #ff4444; }
+#btn-kick  { border-color: #ffaa00; color: #ffaa00; }
+#btn-slam  { border-color: #ff6600; color: #ff6600; }
+#btn-jump  { border-color: #44aaff; color: #44aaff; }
+
+/* WIN SCREEN */
+#win-screen {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+#win-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  letter-spacing: 0.1em;
+}
+#win-screen button {
+  background: linear-gradient(135deg, #ff8800, #ff4444);
+  border: none;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.15em;
+  padding: 12px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brawl Kings</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="waiting-screen">
+  <h1>👑 BRAWL KINGS</h1>
+  <p id="wait-msg">Waiting for players...</p>
+  <div id="player-list"></div>
+</div>
+
+<div id="game-screen" style="display:none;">
+  <div id="hud"></div>
+  <canvas id="gc"></canvas>
+  <div id="mobile-controls">
+    <div id="left-controls">
+      <button id="btn-left">◀️</button>
+      <button id="btn-right">▶️</button>
+      <button id="btn-jump">▲ JUMP</button>
+    </div>
+    <div id="right-controls">
+      <button id="btn-punch">👊 PUNCH</button>
+      <button id="btn-kick">⚡ KICK</button>
+      <button id="btn-slam">💥 SLAM</button>
+    </div>
+  </div>
+</div>
+
+<div id="win-screen" style="display:none;">
+  <h2 id="win-title">🏆 WINNER!</h2>
+  <button onclick="location.reload()">🔄 PLAY AGAIN</button>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
