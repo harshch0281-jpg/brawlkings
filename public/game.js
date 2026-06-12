@@ -1,8 +1,7 @@
-const socket = io({
-  transports: ['websocket', 'polling']
-});const COLORS = ['#ff4444','#4488ff','#44dd44','#ffaa00'];
-const NAMES  = ['RED FURY','BLUE STORM','GREEN BEAST','GOLD VIPER'];
-
+const socket = io('https://brawlkings-production.up.railway.app', {
+  transports: ['polling'],
+  upgrade: false
+});
 const W = 880, H = 400, GROUND = 320;
 const GRAVITY = 1400, JUMP_VEL = -620, MOVE_SPD = 220;
 
