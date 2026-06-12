@@ -1,5 +1,6 @@
-const socket = io();
-const COLORS = ['#ff4444','#4488ff','#44dd44','#ffaa00'];
+const socket = io({
+  transports: ['websocket', 'polling']
+});const COLORS = ['#ff4444','#4488ff','#44dd44','#ffaa00'];
 const NAMES  = ['RED FURY','BLUE STORM','GREEN BEAST','GOLD VIPER'];
 
 const W = 880, H = 400, GROUND = 320;
