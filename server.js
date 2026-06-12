@@ -4,15 +4,18 @@ const { Server } = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: { origin: "*" },
+  transports: ['websocket', 'polling']
+});
 
 app.use(express.static('public'));
 
 let players = {};
-let gameStarted = false;
 
 io.on('connection', (socket) => {
   console.log('Player connected:', socket.id);
+  console.log('Total players:', Object.keys(players).length + 1);
 
   const playerCount = Object.keys(players).length;
 
@@ -34,9 +37,9 @@ io.on('connection', (socket) => {
   };
 
   io.emit('playersUpdate', players);
+  io.emit('playerJoined', Object.keys(players).length);
 
   if (Object.keys(players).length >= 2) {
-    gameStarted = true;
     io.emit('gameStart', players);
   }
 
@@ -54,7 +57,6 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('Player disconnected:', socket.id);
     delete players[socket.id];
-    gameStarted = false;
     io.emit('playerLeft', socket.id);
     io.emit('playersUpdate', players);
   });
@@ -62,5 +64,5 @@ io.on('connection', (socket) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-console.log("Brawl Kings running on port " + PORT);
+  console.log("Brawl Kings running on port " + PORT);
 });
